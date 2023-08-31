@@ -6,6 +6,7 @@ import { DataSource } from 'typeorm';
 import { UsersModule } from './user/users.module';
 // import { User } from './user/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { TokenUser } from './user/entity/token.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -22,6 +23,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     UsersModule,
     AuthModule,
+    TokenUser,
   ],
   controllers: [AppController],
   providers: [AppService],

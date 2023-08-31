@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Delete, Param } from '@nestjs/common';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { UsersService } from './users.service';
 import { UserDto } from './user.dto';
@@ -9,8 +9,12 @@ export class UserController {
 
   @Post('register')
   Register(@Body() body: UserDto): Promise<UserDto> {
-    // return;
     return this.UsersService.Register(body);
+  }
+
+  @Delete('delete/:id')
+  deleteUser(@Param('id') id: string) {
+    return this.UsersService.deleteUser(id);
   }
 
   @Get('get-all-user')
